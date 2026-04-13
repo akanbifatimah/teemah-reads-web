@@ -1,4 +1,5 @@
 import axios from 'axios';
+import client from './client';
 
 const api = axios.create({
   baseURL: import.meta.env.VITE_API_URL,
@@ -24,5 +25,7 @@ export const booksApi = {
   getOne: (id: string)                  => api.get<Book>(`/books/${id}`),
   create: (data: CreateBookPayload)     => api.post<Book>('/books', data),
   update: (id: string, data: Partial<Book>) => api.put<Book>(`/books/${id}`, data),
+  toggleRead: (id: string, read: boolean) =>
+    client.put<Book>(`/books/${id}`, { read }),
   delete: (id: string)                  => api.delete(`/books/${id}`),
 };
