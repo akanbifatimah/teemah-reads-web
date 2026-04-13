@@ -6,7 +6,7 @@ const client = axios.create({
 
 // Attach token to every request automatically
 client.interceptors.request.use((config) => {
-  const token = localStorage.getItem('token');
+  const token = sessionStorage.getItem('token');
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
   }
@@ -18,8 +18,8 @@ client.interceptors.response.use(
   (res) => res,
   (err) => {
     if (err.response?.status === 401) {
-      localStorage.removeItem('token');
-      localStorage.removeItem('email');
+      sessionStorage.removeItem('token');
+      sessionStorage.removeItem('email');
       window.location.href = '/';
     }
     return Promise.reject(err);

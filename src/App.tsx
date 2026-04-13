@@ -7,9 +7,9 @@ import './App.css';
 
 export default function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(
-    () => !!localStorage.getItem('token')   // persist session across refreshes
+    () => !!sessionStorage.getItem('token')   // persist session across refreshes
   );
-  const email = localStorage.getItem('email') ?? '';
+  const email = sessionStorage.getItem('email') ?? '';
 
   const { login, register, logout, loading: authLoading, error: authError } = useAuth();
   const { books, loading, error, addBook, toggleRead, deleteBook } = useBooks(isAuthenticated);
