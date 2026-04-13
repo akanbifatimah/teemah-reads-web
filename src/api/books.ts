@@ -1,18 +1,5 @@
-import axios from 'axios';
-import client from './client';
-
-const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL,
-});
-
-export interface Book {
-  _id: string;
-  title: string;
-  author: string;
-  year?: number;
-  read: boolean;
-  createdAt: string;
-}
+import client from "./client";
+import type { Book } from "../types/book.types";
 
 export interface CreateBookPayload {
   title: string;
@@ -21,11 +8,14 @@ export interface CreateBookPayload {
 }
 
 export const booksApi = {
-  getAll: ()                            => api.get<Book[]>('/books'),
-  getOne: (id: string)                  => api.get<Book>(`/books/${id}`),
-  create: (data: CreateBookPayload)     => api.post<Book>('/books', data),
-  update: (id: string, data: Partial<Book>) => api.put<Book>(`/books/${id}`, data),
+  getAll: () => client.get<Book[]>("/books"),
+
+  getOne: (id: string) => client.get<Book>(`/books/${id}`),
+
+  create: (data: CreateBookPayload) => client.post<Book>("/books", data),
+
   toggleRead: (id: string, read: boolean) =>
     client.put<Book>(`/books/${id}`, { read }),
-  delete: (id: string)                  => api.delete(`/books/${id}`),
+
+  delete: (id: string) => client.delete(`/books/${id}`),
 };

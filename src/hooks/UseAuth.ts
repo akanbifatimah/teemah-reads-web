@@ -15,6 +15,7 @@ export function useAuth() {
       setError("");
       setLoading(true);
       const res = await authApi.login(email, password);
+      console.log("Login response:", res);
       saveSession(res.data.access_token, res.data.email);
       toast.success("Welcome back!");
       return true;
