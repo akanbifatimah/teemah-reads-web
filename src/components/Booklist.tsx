@@ -2,7 +2,7 @@ import { Paper, Typography, Avatar, Button, Tooltip } from '@mui/material'
 import { Logout, MenuBook, AutoStories, CheckCircle } from '@mui/icons-material'
 import type { Book } from '../types/book.types'
 import { BookCard } from './BookCard'
-import { BookForm } from './BookForm'
+import { BookForm } from './Bookform'
 
 interface Props {
   books:    Book[]
@@ -26,7 +26,7 @@ export function BookList({ books, loading, error, onAdd, onToggle, onDelete, onL
   ]
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary-50 to-blue-100 py-8 px-4">
+    <div className="min-h-screen bg-linear-to-br from-primary-50 to-blue-100 py-8 px-4">
       <div className="max-w-2xl mx-auto">
 
         {/* Header */}

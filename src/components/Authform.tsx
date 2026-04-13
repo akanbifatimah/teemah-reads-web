@@ -16,7 +16,7 @@ import {
   VisibilityOff,
   MenuBook,
 } from "@mui/icons-material";
-
+import bgImage from '../assets/shelf.jpg'
 interface Props {
   onLogin: (email: string, password: string) => Promise<boolean>;
   onRegister: (email: string, password: string) => Promise<boolean>;
@@ -63,17 +63,21 @@ export function AuthForm({ onLogin, onRegister, loading, error }: Props) {
   const displayError = localError || error;
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-linear-to-br from-primary-50 to-blue-100 p-4">
-      <div className="w-full max-w-md">
+    <div
+  className="min-h-screen flex items-center justify-center p-4 bg-cover bg-center bg-no-repeat relative"
+  style={{ backgroundImage: `url(${bgImage})` }}
+>
+  <div className="absolute inset-0 bg-black/50" />
+  <div className="w-full max-w-md relative z-10">
         {/* Logo */}
         <div className="flex flex-col items-center mb-8">
           <div className="bg-primary-600 text-white rounded-2xl p-4 mb-3 shadow-lg">
             <MenuBook sx={{ fontSize: 36 }} />
           </div>
-          <Typography variant="h5" className="font-semibold text-primary-900">
+          <Typography variant="h5" className="font-bold text-white text-4xl">
             BookShelf
           </Typography>
-          <Typography variant="body2" className="text-blue-400 mt-1">
+          <Typography variant="body2" className="text-white mt-1 font-medium">
             Your personal reading tracker
           </Typography>
         </div>

@@ -28,7 +28,7 @@ export function BookForm({ onAdd }: Props) {
       <TextField
         label="Year" value={year} onChange={e => setYear(e.target.value)}
         size="small" type="number" sx={{ flex: '0 1 90px' }}
-        inputProps={{ min: 1000, max: 2100 }}
+        slotProps={{ htmlInput: { min: 1000, max: 2100 } }}
       />
       <Button
         type="submit" variant="contained" disabled={loading || !title.trim() || !author.trim()}
